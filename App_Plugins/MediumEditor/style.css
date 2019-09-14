@@ -1,0 +1,14 @@
+.mediumEditor {
+}
+
+.mediumEditor .editable {
+    outline: none;
+    background-color: #fff;
+    border: 1px solid #d8d7d9;
+    padding: 1rem;
+    transition: border .2s linear,box-shadow .2s linear;
+}
+
+.mediumEditor .editable:focus {
+    border-color: #bbbabf;
+}
