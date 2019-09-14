@@ -1,29 +1,20 @@
 angular.module("umbraco").controller("MediumEditor", function ($scope, $element, angularHelper) {
 
 	// Default options
-	this.toolbarOptions = {
-		allowMultiParagraphSelection: false,
-		buttons: ["bold", "italic", "underline", "anchor"]
-	};
-
+	// https://github.com/yabwe/medium-editor/blob/master/OPTIONS.md#core-options
 	this.options = {
-		disableReturn: true,
-		disableDoubleReturn: true,
+		disableReturn: false,
+		disableDoubleReturn: false,
 		disableExtraSpaces: true,
-		toolbar: this.toolbarOptions
+		toolbar: {
+			allowMultiParagraphSelection: true,
+			buttons: ["bold", "italic", "underline", "anchor", "h2", "h3", "quote"]
+		}
 	};
 
 	// If configured, set values
-	if($scope.model.config) {
-		var config = $scope.model.config;
-		if(config.disableReturn)
-			this.options.disableReturn = Object.toBoolean(config.disableReturn);
-		if(config.disableDoubleReturn)
-			this.options.disableDoubleReturn = Object.toBoolean(config.disableDoubleReturn);
-		if(config.disableExtraSpaces)
-			this.options.disableExtraSpaces = Object.toBoolean(config.disableExtraSpaces);
-		if(config.allowMultiParagraphSelection)
-			this.toolbarOptions.allowMultiParagraphSelection = Object.toBoolean(config.allowMultiParagraphSelection);
+	if ($scope.model.config.mediumEditorConfig) {
+		angular.merge(this.options, $scope.model.config.mediumEditorConfig);
 	}
 
 	// Set the editor value
@@ -33,6 +24,8 @@ angular.module("umbraco").controller("MediumEditor", function ($scope, $element,
 	// Initialize the editor
 	this.editor = new MediumEditor(this.editorEl, this.options);
 	this.editor.subscribe("editableInput", function (event, editable) {
+		event.preventDefault();
+		event.stopPropagation();
 		$scope.model.value = editable.innerHTML;
 		angularHelper.getCurrentForm($scope).$setDirty();
 	});

@@ -11,35 +11,12 @@
 			prevalues: {
 				fields: [
 					{
-						label: "Disable Return",
-						description: "Enables/disables the use of the return-key.",
-						key: "disableReturn",
-						view: "boolean"
-					},
-					{
-						label: "Disable Double Return",
-						description: "Allows/disallows two (or more) empty new lines.",
-						key: "disableDoubleReturn",
-						view: "boolean"
-					},
-					{
-						label: "Disable Extra Spaces",
-						description: "When set to true, it disallows spaces at the beginning and end of the element. Also it disallows entering 2 consecutive spaces between 2 words.",
-						key: "disableExtraSpaces",
-						view: "boolean"
-					},
-					{
-						label: "Allow Multi Paragraph Selection",
-						description: "Enables/disables whether the toolbar should be displayed when selecting multiple paragraphs/block elements.",
-						key: "allowMultiParagraphSelection",
-						view: "boolean"
+						label: "Medium Editor Configuration",
+						description: "Just some settings for the Medium Editor.",
+						key: "mediumEditorConfig",
+						view: "~/App_Plugins/MediumEditor/configuration.html"
 					}
 				]
-			},
-			defaultConfig: {
-				disableReturn: "1",
-				disableDoubleReturn: 1,
-				disableExtraSpaces: true
 			}
 		}
 	],
@@ -50,6 +27,7 @@
 	],
 	javascript: [
 		"https://cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js",
-		"~/App_Plugins/MediumEditor/script.js"
+		"~/App_Plugins/MediumEditor/script.js",
+		"~/App_Plugins/MediumEditor/configuration.js"
 	]
 }

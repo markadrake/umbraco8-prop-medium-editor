@@ -1,0 +1,29 @@
+<div ng-controller="MediumEditor.PrevalueEditor">
+	<!--
+		XXX: Can we just loop through `this.options` printing the 
+		correct umb-control and form elements?
+	-->
+	<umb-control-group label="Disable Return" description="Enables/disables the use of the return-key.">
+		<umb-toggle checked="options.disableReturn" on-click="options.disableReturn = !options.disableReturn"></umb-toggle>
+	</umb-control-group>
+
+	<umb-control-group label="Disable Double Return" description="Allows/disallows two (or more) empty new lines.">
+		<umb-toggle checked="options.disableDoubleReturn" on-click="options.disableDoubleReturn = !options.disableDoubleReturn"></umb-toggle>
+	</umb-control-group>
+
+	<umb-control-group label="Disable Extra Spaces" description="When set to true, it disallows spaces at the beginning and end of the element. Also it disallows entering 2 consecutive spaces between 2 words.">
+		<umb-toggle checked="options.disableExtraSpaces" on-click="options.disableExtraSpaces = !options.disableExtraSpaces"></umb-toggle>
+	</umb-control-group>
+
+	<umb-control-group label="Allow Multi Paragraph Selection" description="Enables/disables whether the toolbar should be displayed when selecting multiple paragraphs/block elements.">
+		<umb-toggle checked="options.toolbar.allowMultiParagraphSelection" on-click="options.toolbar.allowMultiParagraphSelection = !options.toolbar.allowMultiParagraphSelection"></umb-toggle>
+	</umb-control-group>
+
+	<umb-control-group label="Buttons" description="The set of buttons to display on the toolbar.">
+		<select name="selectedEditor"
+			multiple
+			ng-model="options.toolbar.buttons"
+			ng-options="o for o in buttonOptions track by o"></select>
+	</umb-control-group>
+	
+</div>
