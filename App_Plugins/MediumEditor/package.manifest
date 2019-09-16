@@ -6,7 +6,8 @@
 			icon: "icon-font",
 			group: "Rich Content",
 			editor: {
-				view: "~/App_Plugins/MediumEditor/index.html"
+				view: "~/App_Plugins/MediumEditor/index.html",
+				valueType: "TEXT"
 			},
 			prevalues: {
 				fields: [
